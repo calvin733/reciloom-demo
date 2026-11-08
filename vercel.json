@@ -1,0 +1,25 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm run vercel:install",
+  "buildCommand": "npm run build",
+  "outputDirectory": "frontend/dist",
+  "regions": ["hnd1"],
+  "fluid": true,
+  "functions": {
+    "api/**/*.js": {
+      "maxDuration": 30,
+      "includeFiles": "backend/certs/**",
+      "excludeFiles": "**/.env*"
+    }
+  },
+  "rewrites": [
+    { "source": "/((?!api(?:/|$)).*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/api/:path*",
+      "headers": [{ "key": "Cache-Control", "value": "private, no-store" }]
+    }
+  ]
+}

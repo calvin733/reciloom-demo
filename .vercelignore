@@ -1,0 +1,10 @@
+.git
+.vercel
+**/node_modules
+**/.env
+**/.env.*
+**/coverage
+**/*.log
+backend/tests
+frontend/src/**/*.test.*
+docs
